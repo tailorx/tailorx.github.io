@@ -1,0 +1,374 @@
+
+body.close section.content .markdown-section {
+  padding: 0 60px;
+}
+
+a:hover {
+  text-decoration: none;
+}
+
+button.sidebar-toggle {
+  width: 239px;
+}
+
+/*首页cover的壁纸*/
+section.cover.show {
+  background-image: url(./_media/bg.jpg) !important;
+  background-size: cover !important;
+}
+
+section.cover .cover-main > p:last-child {
+  position: fixed;
+  left: 0;
+  bottom: 30px;
+  right: 0;
+}
+
+section.cover .cover-main > p:last-child a:last-child {
+  padding: 0;
+  width: 1.8em;
+  height: 3em;
+  border: 0.2em solid #fff;
+  background-color: transparent;
+}
+
+section.cover .cover-main > p:last-child a:last-child:hover {
+  background-color: #fff;
+}
+
+section.cover .cover-main > ul > li > code {
+  font-family: 'Avenir', Helvetica, Arial, sans-serif;
+  font-weight: 600;
+}
+
+@keyframes line-repetition {
+  from {
+    top: 0;
+    opacity: 1;
+  }
+  to {
+    top: 1em;
+    opacity: 0;
+  }
+}
+
+@-webkit-keyframes line-repetition /*Safari and Chrome*/
+{
+  from {
+    top: 0;
+    opacity: 1;
+  }
+  to {
+    top: 1em;
+    opacity: 0;
+  }
+}
+
+section.cover .cover-main > p:last-child a:last-child > span {
+  color: #fed24a;
+  position: relative;
+  width: 0.5em;
+  height: 0.5em;
+  border-right: 0.1em solid;
+  border-bottom: 0.1em solid;
+  display: inline-block;
+  transform: rotate(45deg);
+  -webkit-animation-name: line-repetition;
+  animation-name: line-repetition;
+  animation-duration: 2s;
+  -webkit-animation-duration: 2s;
+  animation-iteration-count: infinite;
+  -webkit-animation-iteration-count: infinite;
+  animation-timing-function: cubic-bezier(0.37, 0.16, 0.12, 1);
+  -webkit-animation-timing-function: cubic-bezier(0.37, 0.16, 0.12, 1);
+}
+
+aside.sidebar {
+  width: 240px;
+  box-shadow: 0 0 10px 0 rgba(131, 142, 162, 0.22);
+}
+
+aside.sidebar > h1 {
+  height: 102px;
+  visibility: hidden;
+}
+
+aside.sidebar .logo {
+  width: 80px;
+  margin: 40px auto 10px auto;
+  text-align: center;
+}
+
+aside.sidebar .logo > p {
+  margin: 0;
+  color: #0f49b3;
+  font-size: 18px;
+}
+
+aside.sidebar .search {
+  margin: 0 2.2em 1em !important;
+  padding: 0 !important;
+}
+
+aside.sidebar .search input {
+  font-size: 12px;
+}
+
+aside.sidebar .sidebar-nav {
+  margin-top: 38px;
+}
+
+aside.sidebar ul {
+  margin: 0;
+}
+aside.sidebar ul li {
+  margin: 0;
+  position: relative;
+
+}
+
+aside.sidebar ul li ul {
+  margin: 8px 0;
+}
+
+aside.sidebar ul li p {
+  padding-left: 87px;
+  font-size: 18px;
+  font-weight: normal;
+  color: #35495e;
+
+}
+
+aside.sidebar ul li a {
+  height: 42px;
+  line-height: 36px;
+  font-size: 14px;
+  color: #7285a1;
+  padding: 3px 0 3px 87px;
+
+}
+
+
+/*
+
+aside.sidebar ul:first-child > li:first-child > p {
+  background: url(./_media/sidebar1.svg) no-repeat 48px;
+}
+
+aside.sidebar ul:first-child > li:nth-child(2) > p {
+  background: url(./_media/sidebar2.svg) no-repeat 48px;
+}
+
+aside.sidebar ul:first-child > li:nth-child(3) > p {
+  background: url(./_media/sidebar3.svg) no-repeat 48px;
+}
+*/
+aside.sidebar ul:first-child > li:first-child > p {
+  background: url(./_media/sidebar0_30x30px.png) no-repeat 48px;
+}
+
+aside.sidebar ul:first-child > li:nth-child(2) > p {
+  background: url(./_media/sidebar1_30x30px.png) no-repeat 48px;
+}
+
+aside.sidebar ul:first-child > li:nth-child(3) > p {
+  background: url(./_media/sidebar2_30x30px.png) no-repeat 48px;
+}
+aside.sidebar ul:first-child > li:nth-child(4) > p {
+  background: url(./_media/sidebar3_30x30px.png) no-repeat 48px;
+}
+aside.sidebar ul:first-child > li:nth-child(5) > p {
+  background: url(./_media/sidebar4_30x30px.png) no-repeat 48px;
+}
+aside.sidebar ul:first-child > li:nth-child(6) > p {
+  background: url(./_media/sidebar5_30x30px.png) no-repeat 48px;
+}
+aside.sidebar ul:first-child > li:nth-child(7) > p {
+  background: url(./_media/other03thumbUp_30x30px.png) no-repeat 48px;
+}
+
+
+aside.sidebar ul li.active > a {
+  border: 0;
+  background-color: rgba(61, 120, 232, 0.05);
+}
+
+aside.sidebar ul li.active > a:before {
+/*  content: '';
+  position: absolute;
+  margin: 0;
+  width: 10px;
+  height: 10px;
+  top: 15px;
+  left: 56px;
+  border-radius: 50%;
+  background-color: #fed24a;//侧边栏标题选择以后前面标志
+  box-shadow: 0 0 0 3px rgba(254, 210, 74, 0.4);*/
+/*以上为原版，以下为修改后：*/
+  content:url(./_media/sidebarOK_30x30px.png) ;
+  position: absolute;
+  margin: 0;
+  width: 10px;
+  height: 10px;
+  top: 8px;
+  left: 56px;
+  /*border-radius: 50%;*/
+/*  background-color: #017ce8;
+box-shadow: 0 0 0 3px rgba(0, 162, 232, 0.4);*/
+
+}
+
+aside.sidebar ul li.active > a:after {
+/*  content: '';
+  position: absolute;
+  left: 0;
+  width: 4px;
+  height: 36px;
+  border-radius: 4px;
+  background-color: #3d78e8;*/
+
+}
+.app-sub-sidebar li a::before {/*vue.css已经有这个功能了，拷到本地屏蔽了*/
+  content: '-';
+  padding-right: 4px;
+  float: left;
+}
+
+
+section.content {
+  padding-top: 40px;
+}
+
+section.content .vuep {
+  height: auto;
+  border: 1px solid #ebebeb;
+  border-radius: 4px;
+}
+
+section.content .vuep:hover {
+  box-shadow: 0 0 10px 0 rgba(232, 237, 250, .6),
+  0 2px 4px 0 rgba(232, 237, 250, .6);
+}
+
+section.content .vuep-editor,
+section.content .vuep-preview {
+  position: relative;
+  width: 50%;
+  height: 432px;
+}
+
+section.content .vuep-editor {
+  margin-right: 0;
+  border-right: 1px dashed #ebebeb;
+}
+
+section.content .vuep-preview {
+  border: 0;
+  padding: 15px 25px;
+}
+
+section.content .markdown-section {
+  max-width: 1200px;
+  min-width: 960px;
+  padding: 0 60px 30px 0;
+}
+
+.markdown-section h1 {
+  font-size: 1.5rem;
+}
+
+.markdown-section h2 {
+  font-size: 1.25rem;
+  margin: 2rem 0 1.5rem;
+}
+
+.markdown-section h3,
+.markdown-section h4 {
+  font-size: 1rem;
+  margin: 1.5rem 0 .75rem;
+}
+
+.markdown-section table {
+  border-radius: 4px;
+}
+
+.markdown-section p.tip,
+.markdown-section tr:nth-child(2n) {
+  background-color: #fafcff;
+}
+
+.CodeMirror {
+  font-family: Menlo, Monaco, Consolas, Courier, monospace;
+  font-size: 12px;
+}
+
+.markdown-section iframe {
+  margin: 0;
+  border: 1px solid #ebebeb;
+  border-radius: 4px;
+}
+
+.markdown-section iframe:hover {
+  border: 1px solid #ebebeb;
+  box-shadow: 0 0 10px 0 rgba(232, 237, 250, .6),
+  0 2px 4px 0 rgba(232, 237, 250, .6);
+}
+/*==============================================================================================================*/
+
+/*=====================================*/
+
+/*箭头不要重复的*/
+.sidebar-nav li > a {
+  background-repeat: var(--sidebar-nav-pagelink-background-repeat);
+  background-size:  10px ;/*居然无效变量.那自己设定吧*/
+}
+
+/*标题往后移动的*/
+/*
+.sidebar-nav li > a[href^="#/"]:not([href*="?id="]), .sidebar-nav li > a[href^="#/"]:not([href*="?id="]) ~ ul a {
+  padding: var(--sidebar-nav-pagelink-padding, var(--sidebar-nav-link-padding))
+}
+*/
+
+.sidebar-nav li > a[href^="#/"]:not([href*="?id="]):only-child {
+  background-image: var(--sidebar-nav-pagelink-background-image);
+  background-position: var(--sidebar-nav-pagelink-background-position)
+}
+
+/*.sidebar-nav li > a[href^="#/"]:not([href*="?id="]):not(:only-child) {*/
+/*  background-image: var(--sidebar-nav-pagelink-background-image--loaded, var(--sidebar-nav-pagelink-background-image));*/
+/*  background-position: var(--sidebar-nav-pagelink-background-position--loaded, var(--sidebar-nav-pagelink-background-image))*/
+/*}*/ /* 参照其他两个修给为以下函数，也不找到啥意思*/
+
+.sidebar-nav li > a[href^="#/"]:not([href*="?id="]):not(:only-child) {
+  background-image: var(--sidebar-nav-pagelink-background-image--loaded, var(--sidebar-nav-pagelink-background-image));
+  background-position: var(--sidebar-nav-pagelink-background-position--loaded, var(--sidebar-nav-pagelink-background-position, var(--sidebar-nav-pagelink-background-image)))
+}
+
+
+.sidebar-nav li.active > a[href^="#/"]:not([href*="?id="]):not(:only-child) {
+  background-image: var(--sidebar-nav-pagelink-background-image--active, var(--sidebar-nav-pagelink-background-image--loaded, var(--sidebar-nav-pagelink-background-image)));
+  background-position: var(--sidebar-nav-pagelink-background-position--active, var(--sidebar-nav-pagelink-background-position--loaded, var(--sidebar-nav-pagelink-background-image)))
+}
+
+.sidebar-nav li.collapse > a[href^="#/"]:not([href*="?id="]):not(:only-child) {
+  background-image: var(--sidebar-nav-pagelink-background-image--collapse, var(--sidebar-nav-pagelink-background-image--loaded, var(--sidebar-nav-pagelink-background-image)));
+  background-position: var(--sidebar-nav-pagelink-background-position--collapse, var(--sidebar-nav-pagelink-background-position--loaded, var(--sidebar-nav-pagelink-background-image)))
+}
+
+
+:root {
+  --sidebar-nav-pagelink-background-repeat: no-repeat;
+  --sidebar-nav-pagelink-background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='7' height='11.2' viewBox='0 0 7 11.2'%3E%3Cpath d='M1.5 1.5l4 4.1 -4 4.1' stroke-width='1.5' stroke='rgb%28179, 179, 179%29' fill='none' stroke-linecap='square' stroke-linejoin='miter' vector-effect='non-scaling-stroke'/%3E%3C/svg%3E");
+  --sidebar-nav-pagelink-background-image--active: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='11.2' height='7' viewBox='0 0 11.2 7'%3E%3Cpath d='M1.5 1.5l4.1 4 4.1-4' stroke-width='1.5' stroke='rgb%2811, 135, 218%29' fill='none' stroke-linecap='square' stroke-linejoin='miter' vector-effect='non-scaling-stroke'/%3E%3C/svg%3E");
+  --sidebar-nav-pagelink-background-image--collapse: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='7' height='11.2' viewBox='0 0 7 11.2'%3E%3Cpath d='M1.5 1.5l4 4.1 -4 4.1' stroke-width='1.5' stroke='rgb%2811, 135, 218%29' fill='none' stroke-linecap='square' stroke-linejoin='miter' vector-effect='non-scaling-stroke'/%3E%3C/svg%3E");
+  --sidebar-nav-pagelink-background-image--loaded: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='11.2' height='7' viewBox='0 0 11.2 7'%3E%3Cpath d='M1.5 1.5l4.1 4 4.1-4' stroke-width='1.5' stroke='rgb%2811, 135, 218%29' fill='none' stroke-linecap='square' stroke-linejoin='miter' vector-effect='non-scaling-stroke'/%3E%3C/svg%3E");
+  --sidebar-nav-pagelink-background-position: 60px center;
+  --sidebar-nav-pagelink-background-position--active: 60px  center;/*var(--sidebar-nav-pagelink-background-position);left center;*/
+  --sidebar-nav-pagelink-background-position--collapse: var(--sidebar-nav-pagelink-background-position);
+  --sidebar-nav-pagelink-padding: 0.25em 0 0.25em 56px;
+  --sidebar-nav-link-padding: 0.25em 0;
+}
+
+/*======================================*/
+

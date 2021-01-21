@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>WM-Notebook</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
+    <meta name="description" content="Description">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+
+    <link rel="icon" href="_media/icon_red.ico" mce_href="icon_red.ico" type="image/x-icon"/>
+
+
+    <!--给指定的某一类名的图片加上水印-->
+
+    <link rel="stylesheet" href="../_plugins/watermarkjs-master/examples/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="../_plugins/watermarkjs-master/examples/css/bootstrap-theme.min.css"/>
+    <link rel="stylesheet" href="../_plugins/watermarkjs-master/examples/css/style.css"/>
+
+</head>
+
+<!--+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++-->
+<body>
+
+
+<img src="testimg.assets/109951165302611854.jpg" id="1" class="★mg-watermark-text★"/>
+
+<img src="testimg.assets/109951165309124937.jpg " id="2" class="★mg-watermark-img★"/>
+
+<img src="/_media/bg.jpg" id="11" class="11"/>
+<img src="/_media/bg.jpg" id="22" class="22"/>
+
+<img class="003"  loading="lazy" src="/img/imgT.jpg">
+<!--给指定的某一类名的图片加上水印-->
+<script src="/watermark.js"></script>
+<script>
+    <!-- 调用异步函数用递归,给指定的类名为★img-watermark-text★的图片加上文字水印-WM-  -->
+    var theImgTags = document.getElementsByClassName("★mg-watermark-text★");
+    if (theImgTags.length > 0) {
+        var i = theImgTags.length - 1;
+        recursion();
+
+        function recursion() {
+            if (i < 0) {
+                return -1;
+            } else {
+                var theImgTag = theImgTags[i];
+                var theImgTagSrc = theImgTag.src;
+                console.log(theImgTagSrc);
+                 watermark([theImgTagSrc])
+                    .image(watermark.text.lowerRight('-WM-', '28px serif', '#ffffff', 0.5))
+                    .then(function (img) {
+                        theImgTag.src = img.src;
+                    });
+                i--;
+                return recursion();
+            }
+        }
+    }
+</script>
+<script>
+    <!--调用异步函数用递归,给指定的类名为★img-watermark-img★的图片加上图片水印'/_media/logo_red.png']。-->
+    var theImgTags2 = document.getElementsByClassName("★mg-watermark-img★");
+    if (theImgTags2.length > 0) {
+        var i = theImgTags2.length - 1;
+        recursion();
+
+        function recursion() {
+            if (i < 0) {
+                return -1;
+            } else {
+                var theImgTag = theImgTags2[i];
+                var theImgTagSrc = theImgTag.src;
+                console.log(theImgTagSrc);
+                watermark([theImgTagSrc, '/_media/log.png'])
+                    .image(watermark.image.lowerRight(0.5))
+                    .then(function (img) {
+                        theImgTag.src = img.src;
+                    });
+                i--;
+                return recursion();
+            }
+        }
+    }
+
+</script>
+<script>
+    // simple composite image
+    //var theImgTags11 = document.getElementsByClassName("11");
+    watermark(['/_media/bg.jpg', '/_media/logo.png'])
+        .image(watermark.image.lowerRight())
+        .then(function (img) {
+            var theImgTags11 = document.getElementsByClassName("11");
+            theImgTags11[0].scr=img.scr;
+        });
+
+    // a composite image with transparent watermark
+    var theImgTags22 = document.getElementsByClassName("22");
+    watermark(['/_media/bg.jpg', '/_media/logo.png'])
+        .image(watermark.image.lowerRight(0.5))
+        .then(function (img) {
+            theImgTags22[0].scr=img.scr;
+        });
+</script>
+<script>
+    // simple composite image
+    var divs = document.getElementsByClassName('003');
+    watermark(['/_media/bg.jpg', '/_media/logo_red.png'])
+        .image(watermark.image.lowerRight())
+        .then(function (img) {
+            divs[0].src=img.src;
+        });
+</script>
+
+</body>
+</html>

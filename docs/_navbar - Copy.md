@@ -1,0 +1,6 @@
+- Translations
+  - [:uk: English](/) <!-- {docsify-ignore} -->
+  - [:cn: 中文](/zh-cn/)
+  - [:de: Deutsch](/de-de/) <!-- {docsify-ignore} -->
+  - [:es: Spanish](/es/) <!-- {docsify-ignore} -->
+  - [:ru: Russian](/ru-ru/) <!-- {docsify-ignore} -->

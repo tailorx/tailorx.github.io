@@ -1,0 +1,256 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <title>watermark.js - watermarks in the browser</title>
+    <script src="/scripts/watermark.js"></script>
+<!--    <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.5/highlight.min.js"></script>-->
+<!--    <link href='http://fonts.googleapis.com/css?family=Josefin+Slab|Maven+Pro' rel='stylesheet' type='text/css'>-->
+<!--    <link rel="stylesheet" href="/css/bootstrap.min.css"/>-->
+<!--    <link rel="stylesheet" href="/css/bootstrap-theme.min.css"/>-->
+<!--    <link rel="stylesheet" href="/css/style.css"/>-->
+<!--    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.5/styles/default.min.css">-->
+</head>
+
+<body>
+
+<div class="container">
+
+    <h1 class="text-center"><a href="/">watermark.js</a></h1>
+    <nav>
+        <ul>
+            <li><a href="images.html">images</a></li>
+            <li class="separator">-</li>
+            <li><a href="text.html">text</a></li>
+            <li class="separator">-</li>
+            <li><a href="uploading.html">uploading</a></li>
+            <li class="separator">-</li>
+            <li><a href="pooling.html">pooling</a></li>
+            <li class="separator">-</li>
+            <li><a href="docs.html">documentation</a></li>
+        </ul>
+    </nav>
+
+    <div class="col-xs-12">
+
+        <div class="example" id="composite-image">
+            <h2>Composite Images</h2>
+            <pre>
+          <code class="javascript">
+watermark(['/img/shepherd.jpg', '/img/logo.png'])
+  .image(watermark.image.lowerRight())
+  .then(function (img) {
+    document.getElementById('composite-image').appendChild(img);
+  });
+          </code>
+        </pre>
+        </div>
+
+        <div class="example" id="alpha-image">
+            <h2>Alpha Transparency</h2>
+            <pre>
+          <code class="javascript">
+watermark(['/img/forest.jpg', '/img/logo.png'])
+  .image(watermark.image.lowerRight(0.5))
+  .then(function (img) {
+    document.getElementById('alpha-image').appendChild(img);
+  });
+          </code>
+        </pre>
+        </div>
+
+        <div class="example" id="text">
+            <h2>Text</h2>
+            <pre>
+          <code class="javascript">
+watermark(['/img/field.jpg'])
+  .image(watermark.text.lowerRight('MyPhoto', '28px serif', '#fff', 0.5))
+  .then(function (img) {
+    document.getElementById('text').appendChild(img);
+  });
+          </code>
+        </pre>
+        </div>
+
+    </div>
+</div>
+
+
+
+
+
+<h2>自定义测试1：div里的img 1</h2>
+<div class="exampley" id="text400">
+    <!--    <img loading="lazy" src="/img/field.jpg" alt="Smiley face" width="42" height="42">-->
+    <img loading="lazy" src="/img/field.jpg">
+</div>
+<h2>自定义测试2：div里的img 2</h2>
+
+<div class="exampley" id="text500">
+    <!--    <img loading="lazy" src="/img/field.jpg" alt="Smiley face" width="42" height="42">-->
+    <img loading="lazy" src="/img/field.jpg">
+</div>
+
+
+
+
+
+<h2>自定义测试3：纯img标签 1</h2>
+<img class="img-watermark-text" id="img001" loading="lazy" src="/img/field.jpg">
+
+<h2>自定义测试3：纯img标签 2</h2>
+<img class="img-watermark-text" id="img002" loading="lazy" src="/img/imgT.jpg">
+
+
+
+
+<h2>自定义测试3：纯img标签 2</h2>
+<img class="003"  loading="lazy" src="/img/imgT.jpg">
+
+
+<script>
+    // simple composite image
+    var divs = document.getElementsByClassName('003');
+    watermark(['/img/bg.jpg', '/img/logo_red.png'])
+        .image(watermark.image.lowerRight(0.2))
+        .then(function (img) {
+            divs[0].src=img.src;
+        });
+</script>
+
+
+
+<script>
+    // simple composite image
+    watermark(['/img/shepherd.jpg', '/img/logo.png'])
+        .image(watermark.image.lowerRight())
+        .then(function (img) {
+            var pre = document.querySelector('#composite-image pre');
+            pre.parentNode.insertBefore(img, pre);
+        });
+
+    // a composite image with transparent watermark
+    watermark(['/img/forest.jpg', '/img/logo.png'])
+        .image(watermark.image.lowerRight(0.5))
+        .then(function (img) {
+            var pre = document.querySelector('#alpha-image pre');
+            pre.parentNode.insertBefore(img, pre);
+        });
+
+    // simple text watermark
+    watermark(['/img/field.jpg'])
+        .image(watermark.text.lowerRight('MyPhoto', '28px serif', '#fff', 0.5))
+        .then(function (img) {
+            var pre = document.querySelector('#text pre');
+            pre.parentNode.insertBefore(img, pre);
+        });
+</script>
+
+<script>hljs.initHighlightingOnLoad();</script>
+
+
+<!--测试将div下的img加水印，通过赋值属性src-->
+<script>
+    // alert("测试将div下的img加水印，通过赋值属性src 1");
+
+    watermark(['/img/falcon.jpg'])//异步函数执行到这里以后先执行之后的【 alert("txt添加水印2");】在执行里面的。
+        .image(watermark.text.lowerRight('-WM-', '28px serif', '#ffffff', 0.5))
+        .then(function (img) {
+            var divs = document.getElementsByClassName('exampley');//这里为了简单写下面的东西，所以做一个全局变量
+            if (divs.length > 0) {
+                for (var i = 0; i < divs.length; i++) {//让每一个都有效果，所以这里需要使用循环
+                    var tt = '#text1 img';
+                    // tt = '\'' + '#' +divs[i].id.toString()+ ' pre' + '\'';
+                    console.log(tt);
+                    tt = '#' + divs[i].id.toString() + ' img';
+                    console.log(tt);
+                    var pre = document.querySelector(tt);
+                    var baseurl = pre.baseURI;
+                    var myurl = pre.src;
+                    pre.src = img.src;
+
+                    // pre.parentNode.insertBefore(img, pre);
+                }
+            }
+        });
+    // alert("测试将div下的img加水印，通过赋值属性src 2");
+</script>
+<!--直接超找某一类名的img标签，将其src里的图片加水印-->
+<script>
+
+    // alert("直接超找某一类名的img标签，将其src里的图片加水印 1");
+    var theImgTags = document.getElementsByClassName("img-watermark-text");//这里为了简单写下面的东西，所以做一个全局变量
+    // 第二种方法，调用异步函数用递归
+    if (theImgTags.length > 0) {
+        var i=theImgTags.length-1;
+        recursion();
+        function recursion(){
+            if (i<0){
+                return -1;
+            }
+                else{
+                var theImgTag = theImgTags[i];
+                var theImgTagSrc = theImgTag.src;
+                console.log(theImgTagSrc);
+                new watermark([theImgTagSrc])
+                    .image(watermark.text.lowerRight('-WM-', '28px serif', '#ffffff', 0.5))
+                    .then(function (img) {
+                        theImgTag.src = img.src;
+                    });
+                i--;
+                return  recursion();
+            }
+        }
+// // 第一种方法 失败，循环调用异步函数不能用for
+//         for (var i = 0; i < theImgTags.length; i++) {
+//             var theImgTag = theImgTags[i];
+//             var theImgTagSrc = theImgTag.src;
+//             console.log(theImgTagSrc);
+//             new watermark([theImgTagSrc])
+//                 .image(watermark.text.lowerRight('-WM-', '28px serif', '#ffffff', 0.5))
+//                 .then(function (img) {
+//                     theImgTag.src = img.src;
+//                 });
+//         }
+    }
+
+    // alert("直接超找某一类名的img标签，将其src里的图片加水印 2");
+
+
+    // js遍历一个元素下的所有img标签，并取得src
+    // 例一
+    // $("div[class='exampley'] img").each(function() {
+    //
+    //     var src=$(this).attr("src");
+    //
+    // });
+
+// 例二
+//     let div = document.getElementsByClassName("exampley")[0];
+//     console.log(div);
+//     let img = div.getElementsByTagName("img")[0];
+//     console.log(img.height);
+
+    // // js 异步for循环
+    // // 假设一名厨师，需要做3道菜,声明一个菜数组，菜对象是菜名和做菜需要的时间
+    // let dishes=[{name:"fish",time:1},{name:"fish1",time:2},{name:"fish3",time:3}];
+    //
+    // // 首先，厨师做菜应该一道接一道的做，所以得保证一道菜做后才开始做下一道菜。这里用async/await实现，当然也可以选择都用Promise
+    // (async ()=>{
+    //     for (let d of ds) {
+    //         console.log("开始做"+d.name)
+    //         await (() => {
+    //             return new Promise(res => {
+    //                 setTimeout(res, d.time * 1000)
+    //             })
+    //         })();
+    //         console.log("做好了"+d.name)
+    //     }
+    // });
+</script>
+
+
+</body>
+
+</html>
